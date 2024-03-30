@@ -1,7 +1,7 @@
 {
   "name": "monorepo-env-merger",
   "type": "module",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Automatically merge env files in a monorepo",
   "author": "Fahadul Islam @dapotatoman",
   "license": "MIT",
