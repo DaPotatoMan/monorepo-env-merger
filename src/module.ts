@@ -12,9 +12,7 @@ export default defineNuxtModule<Config>({
     },
   },
 
-  defaults: {
-    outputDir: '.nuxt',
-  },
+  defaults: {},
 
   setup(config, nuxt) {
     const mode = nuxt.options.vite.mode!
