@@ -1,11 +1,11 @@
-# Monorepo Env Merger
+# Monorepo Env
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
-Automatically merge env variables between monorepo root and project.
+Automatically merge/share env files between monorepo root and project.
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
 <!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/monorepo-env?file=playground%2Fapp.vue) -->
@@ -16,7 +16,7 @@ Automatically merge env variables between monorepo root and project.
 <!-- Highlight some of the features your module provide here -->
 - 📦 Zero config. Get started without any hassle
 - 📃 Auto generated types for env variables
-- 🌍 Supports Nuxt & Vite
+- 🌍 Supports both Nuxt & Vite
 
 ## Nuxt Setup
 
