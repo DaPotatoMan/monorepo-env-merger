@@ -8,7 +8,7 @@
 Automatically merge env variables between monorepo root and project.
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
-<!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/monorepo-env-merger?file=playground%2Fapp.vue) -->
+<!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/monorepo-env?file=playground%2Fapp.vue) -->
 <!-- - [📖 &nbsp;Documentation](https://example.com) -->
 
 ## Features
@@ -23,24 +23,24 @@ Automatically merge env variables between monorepo root and project.
 Install the module to your Nuxt application with one command:
 
 ```bash
-npx nuxi module add monorepo-env-merger
+npx nuxi module add monorepo-env
 ```
 
-That's it! You can now use monorepo-env-merger in your Nuxt app ✨
+That's it! You can now use monorepo-env in your Nuxt app ✨
 
 ## Vite Setup
 
 Add the dependency
 
 ```bash
-pnpm add -D monorepo-env-merger
+pnpm add -D monorepo-env
 ```
 
 Setup `vite.config.ts`
 
 ```ts
 import { defineConfig } from 'vite'
-import EnvMerger from 'monorepo-env-merger/vite'
+import EnvMerger from 'monorepo-env/vite'
 
 defineConfig({
   plugins: [
@@ -81,14 +81,14 @@ defineConfig({
 </details>
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/monorepo-env-merger/latest.svg?style=flat&colorA=020420&colorB=00DC82
-[npm-version-href]: https://npmjs.com/package/monorepo-env-merger
+[npm-version-src]: https://img.shields.io/npm/v/monorepo-env/latest.svg?style=flat&colorA=020420&colorB=00DC82
+[npm-version-href]: https://npmjs.com/package/monorepo-env
 
-[npm-downloads-src]: https://img.shields.io/npm/dm/monorepo-env-merger.svg?style=flat&colorA=020420&colorB=00DC82
-[npm-downloads-href]: https://npmjs.com/package/monorepo-env-merger
+[npm-downloads-src]: https://img.shields.io/npm/dm/monorepo-env.svg?style=flat&colorA=020420&colorB=00DC82
+[npm-downloads-href]: https://npmjs.com/package/monorepo-env
 
-[license-src]: https://img.shields.io/npm/l/monorepo-env-merger.svg?style=flat&colorA=020420&colorB=00DC82
-[license-href]: https://npmjs.com/package/monorepo-env-merger
+[license-src]: https://img.shields.io/npm/l/monorepo-env.svg?style=flat&colorA=020420&colorB=00DC82
+[license-href]: https://npmjs.com/package/monorepo-env
 
 [nuxt-src]: https://img.shields.io/badge/Nuxt-020420?logo=nuxt.js
 [nuxt-href]: https://nuxt.com

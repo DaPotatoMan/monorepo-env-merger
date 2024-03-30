@@ -1,11 +1,11 @@
 {
-  "name": "monorepo-env-merger",
+  "name": "monorepo-env",
   "type": "module",
   "version": "0.0.0",
-  "description": "Automatically merge env files in a monorepo",
+  "description": "Automatically merge/share env files in a monorepo",
   "author": "Fahadul Islam @dapotatoman",
   "license": "MIT",
-  "repository": "dapotatoman/monorepo-env-merger",
+  "repository": "dapotatoman/monorepo-env",
   "keywords": [
     "env",
     "nuxt",

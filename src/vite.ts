@@ -3,7 +3,7 @@ import { type EnvGeneratorConfig, generateENV } from './logic'
 
 export default function (config: EnvGeneratorConfig = {}): Plugin {
   return {
-    name: 'monorepo-env-merger',
+    name: 'monorepo-env',
     enforce: 'pre',
 
     config(viteConfig, { mode }) {

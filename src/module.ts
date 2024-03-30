@@ -5,8 +5,8 @@ interface Config extends Omit<EnvGeneratorConfig, 'dts'> {}
 
 export default defineNuxtModule<Config>({
   meta: {
-    name: 'monorepo-env-merger',
-    configKey: 'envMerger',
+    name: 'monorepo-env',
+    configKey: 'monorepoENV',
     compatibility: {
       nuxt: '>=3',
     },
