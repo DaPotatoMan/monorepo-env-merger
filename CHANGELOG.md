@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v0.0.2
+
+[compare changes](https://github.com/dapotatoman/monorepo-env/compare/v0.0.1...v0.0.2)
+
+### 🚀 Enhancements
+
+- Improve Nuxt runtime env loading ([f1da7e5](https://github.com/dapotatoman/monorepo-env/commit/f1da7e5))
+
+### 🩹 Fixes
+
+- Change default .env dir in nuxt module to `node_modules/.env` ([9701b74](https://github.com/dapotatoman/monorepo-env/commit/9701b74))
+
+### 🏡 Chore
+
+- Fix lint issue ([9837140](https://github.com/dapotatoman/monorepo-env/commit/9837140))
+
+### ❤️ Contributors
+
+- Dapotatoman <iam.fahadul@gmail.com>
+
 ## v0.0.1
 
 
