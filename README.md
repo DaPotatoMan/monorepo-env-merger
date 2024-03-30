@@ -57,11 +57,11 @@ Setup `vite.config.ts`
 
 ```ts
 import { defineConfig } from 'vite'
-import EnvMerger from 'monorepo-env/vite'
+import MonorepoENV from 'monorepo-env/vite'
 
 defineConfig({
   plugins: [
-    EnvMerger()
+    MonorepoENV()
   ]
 })
 ```
