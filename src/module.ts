@@ -1,36 +1,43 @@
 import { addTypeTemplate, defineNuxtModule } from '@nuxt/kit'
-import { generateENV } from './logic'
+import { type EnvGeneratorConfig, generateENV } from './logic'
 
-export default defineNuxtModule({
+interface Config extends Omit<EnvGeneratorConfig, 'dts'> {}
+
+export default defineNuxtModule<Config>({
   meta: {
-    name: 'env-updater',
-    configKey: 'envUpdater',
+    name: 'monorepo-env-merger',
+    configKey: 'envMerger',
+    compatibility: {
+      nuxt: '>=3',
+    },
   },
+
   defaults: {
-    // Default module options
+    outputDir: '.nuxt',
   },
-  setup(_options, nuxt) {
+
+  setup(config, nuxt) {
     const mode = nuxt.options.vite.mode!
-    const { env, envDir, dtsContent } = generateENV(mode, {
-      dir: '.nuxt',
+    const env = generateENV(mode, {
+      ...config,
       dts: false,
     })
 
-    // Add dts types
+    // Add types
     addTypeTemplate({
       filename: 'types/env.d.ts',
-      getContents: () => dtsContent,
+      getContents: () => env.dtsContent,
     })
 
     // Update runtime env
     Object.assign(
       nuxt.options.runtimeConfig.public,
-      env,
+      env.data,
     )
 
     nuxt.hook('vite:extendConfig', async (options) => {
       // Update vite env
-      options.envDir = envDir
+      options.envDir = env.outputDir
     })
   },
 })

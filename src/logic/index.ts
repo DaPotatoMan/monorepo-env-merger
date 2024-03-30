@@ -7,13 +7,31 @@ import { prepareDir, resolvePath } from './utils'
 type EnvMap = Record<string, string | boolean>
 
 export interface EnvGeneratorConfig {
-  /** Current project path */
+  /**
+   * Current project path
+   * @default ```ts
+   * process.cwd()
+   * ```
+   */
   cwd?: string
 
   /** Monorepo project root path */
-  root?: string
+  root?: string | null
+
+  /**
+   * Folder where .env file will be generated
+   * @default node_modules/.env
+   */
+  outputDir?: string
+
+  /**
+   * Path of env types
+   * @default {cwd}/env.d.ts
+   */
+  dts?: boolean | `${string}.d.ts`
 }
 
+/** Generates types for .env */
 function generateTypes(mode: string, env: EnvMap) {
   const dtsEnvMap = Object.entries(env)
     .map(([key, value]) => `  readonly ${key}: ${JSON.stringify(value)}`)
@@ -50,20 +68,20 @@ function getEnvContent(mode: string, data: EnvMap) {
 export function generateENV(mode: string, {
   cwd = process.cwd(),
   root = monorepoRootSync(),
-
-  /** Folder where env files will be generated */
-  dir = 'node_modules/.env',
-
+  outputDir: outputDirRaw = 'node_modules/.env',
   dts = true,
-} = {}) {
+}: Partial<EnvGeneratorConfig> = {}) {
   if (!root)
     throw new Error('projectRoot not defined')
 
-  const envDir = resolvePath(dir)
-  const envPath = resolvePath(envDir, '.env')
-  const dtsPath = resolvePath(envDir, 'vite-env.d.ts')
+  /** Where .env file will be generated */
+  const outputDir = resolvePath(outputDirRaw)
 
-  const env = {
+  /** Generated .env path */
+  const outputPath = resolvePath(outputDir, '.env')
+
+  /** Parsed env map */
+  const data = {
     // Root
     ...loadEnv(mode, root),
 
@@ -71,13 +89,18 @@ export function generateENV(mode: string, {
     ...loadEnv(mode, cwd),
   }
 
-  const envString = getEnvContent(mode, env)
-  const dtsContent = generateTypes(mode, env)
+  const envContent = getEnvContent(mode, data)
+  const dtsContent = generateTypes(mode, data)
 
-  prepareDir(envDir)
-  fs.writeFileSync(envPath, envString)
-  if (dts)
+  // Generate .env file
+  prepareDir(outputDir)
+  fs.writeFileSync(outputPath, envContent)
+
+  // Generate dts file
+  if (dts) {
+    const dtsPath = resolvePath(typeof dts === 'string' ? dts : 'env.d.ts')
     fs.writeFileSync(dtsPath, dtsContent)
+  }
 
-  return { env, envDir, envPath, dtsPath, dtsContent }
+  return { data, outputDir, outputPath, dtsContent }
 }

@@ -1,23 +1,16 @@
-import { type Plugin, createLogger } from 'vite'
-import { generateENV } from './logic'
+import type { Plugin } from 'vite'
+import { type EnvGeneratorConfig, generateENV } from './logic'
 
-export function pluginENVMerge(): Plugin[] {
-  const logger = createLogger('info', { prefix: '[vite-plugin-env-merge]', allowClearScreen: true })
+export default function (config: EnvGeneratorConfig = {}): Plugin {
+  return {
+    name: 'monorepo-env-merger',
+    enforce: 'pre',
 
-  return [
-    {
-      name: 'env-merge-config',
-      enforce: 'pre',
+    config(viteConfig, { mode }) {
+      const env = generateENV(mode, config)
 
-      config(config, env) {
-        const { mode } = env
-        const { envDir, envPath } = generateENV(mode)
-
-        config.envDir = envDir
-        logger.info(`🔗 ENV files generated (${mode}): ${envPath}`)
-
-        return config
-      }
-    }
-  ]
+      viteConfig.envDir = env.outputDir
+      return viteConfig
+    },
+  }
 }
