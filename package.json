@@ -1,15 +1,20 @@
 {
-  "name": "my-module",
-  "version": "1.0.0",
-  "description": "My new Nuxt module",
-  "repository": "your-org/my-module",
-  "license": "MIT",
+  "name": "monorepo-env-merger",
   "type": "module",
+  "version": "1.0.0",
+  "description": "Automatically merge env files in a monorepo",
+  "license": "MIT",
+  "repository": "dapotatoman/monorepo-env-merger",
   "exports": {
     ".": {
       "types": "./dist/types.d.ts",
       "import": "./dist/module.mjs",
       "require": "./dist/module.cjs"
+    },
+    "./vite": {
+      "types": "./dist/vite.d.ts",
+      "import": "./dist/vite.mjs",
+      "require": "./dist/vite.cjs"
     }
   },
   "main": "./dist/module.cjs",
@@ -29,7 +34,9 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.11.1"
+    "@nuxt/kit": "^3.11.1",
+    "monorepo-root": "^3.2.0",
+    "vite": "^5.2.7"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.11.5",
