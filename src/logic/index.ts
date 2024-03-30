@@ -29,6 +29,14 @@ export interface EnvGeneratorConfig {
    * @default {cwd}/env.d.ts
    */
   dts?: boolean | `${string}.d.ts`
+
+  /**
+   * Prefixed env variables to load
+   * @default ```ts
+   * ['NUXT', 'VITE']
+   * ```
+   */
+  prefixes?: string[]
 }
 
 /** Generates types for .env */
@@ -70,6 +78,7 @@ export function generateENV(mode: string, {
   root = monorepoRootSync(),
   outputDir: outputDirRaw = 'node_modules/.env',
   dts = true,
+  prefixes = ['NUXT_', 'VITE_'],
 }: Partial<EnvGeneratorConfig> = {}) {
   if (!root)
     throw new Error('projectRoot not defined')
@@ -83,10 +92,10 @@ export function generateENV(mode: string, {
   /** Parsed env map */
   const data = {
     // Root
-    ...loadEnv(mode, root),
+    ...loadEnv(mode, root, prefixes),
 
     // Local
-    ...loadEnv(mode, cwd),
+    ...loadEnv(mode, cwd, prefixes),
   }
 
   const envContent = getEnvContent(mode, data)
