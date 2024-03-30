@@ -1,15 +1,8 @@
 import fs from 'node:fs'
 import process from 'node:process'
-import { resolve } from 'node:path'
-import { createLogger, loadEnv, normalizePath } from 'vite'
+import { loadEnv } from 'vite'
 import { monorepoRootSync } from 'monorepo-root'
-
-const r = (...paths: string[]) => normalizePath(resolve(...paths))
-
-function ensureDir(path: string) {
-  if (!fs.existsSync(path))
-    fs.mkdirSync(path)
-}
+import { prepareDir, resolvePath } from './utils'
 
 function generateTypes(env: Record<string, string>) {
   const dtsEnvMap = Object.entries(env).map(([key, value]) => `\s\sreadonly ${key}: '${value}'`).join('\n')
@@ -46,9 +39,9 @@ export function generateENV(mode: string, {
   if (!projectRoot)
     throw new Error('projectRoot not defined')
 
-  const envDir = r(dir)
-  const envPath = r(envDir, '.env')
-  const dtsPath = r(envDir, 'vite-env.d.ts')
+  const envDir = resolvePath(dir)
+  const envPath = resolvePath(envDir, '.env')
+  const dtsPath = resolvePath(envDir, 'vite-env.d.ts')
 
   const rootENV = loadEnv(mode, projectRoot)
   const localENV = loadEnv(mode, localDir)
@@ -57,7 +50,7 @@ export function generateENV(mode: string, {
   const envString = Object.entries(env).map(([key, value]) => `${key}=${value}`).join('\n')
   const dtsContent = generateTypes(env)
 
-  ensureDir(envDir)
+  prepareDir(envDir)
   fs.writeFileSync(envPath, envString)
   if (dts)
     fs.writeFileSync(dtsPath, dtsContent)
