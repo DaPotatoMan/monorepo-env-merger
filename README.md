@@ -14,9 +14,10 @@ Automatically merge/share env files between monorepo root and project.
 ## Features
 
 <!-- Highlight some of the features your module provide here -->
-- 📦 Zero config. Get started without any hassle
-- 📃 Auto generated types for env variables
 - 🌍 Supports both Nuxt & Vite
+- 📦 Zero config. Get started without any hassle
+- ⚙️ Automatic Nuxt runtime env handling
+- 📃 Auto generated types for env variables
 
 ## Nuxt Setup
 
@@ -27,6 +28,22 @@ npx nuxi module add monorepo-env
 ```
 
 That's it! You can now use monorepo-env in your Nuxt app ✨
+
+### Nuxt Runtime
+
+Only `NUXT_` prefixed variables are exposed to nuxt runtime (when enabled).
+
+```bash
+NUXT_KEY=my-private-key
+NUXT_PUBLIC_KEY=my-public-key
+```
+
+The above env variables will become this in nuxt runtime:
+
+```ts
+$config.key
+$config.public.key
+```
 
 ## Vite Setup
 

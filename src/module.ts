@@ -1,7 +1,10 @@
 import { addTypeTemplate, defineNuxtModule } from '@nuxt/kit'
-import { type EnvGeneratorConfig, generateENV } from './logic'
+import { type EnvGeneratorConfig, generateENV, getNuxtRuntimeEnvMap } from './logic'
 
-interface Config extends Omit<EnvGeneratorConfig, 'dts'> {}
+interface Config extends Omit<EnvGeneratorConfig, 'dts'> {
+  /** Expose env variables to nuxt runtime */
+  runtime?: boolean
+}
 
 export default defineNuxtModule<Config>({
   meta: {
@@ -12,7 +15,9 @@ export default defineNuxtModule<Config>({
     },
   },
 
-  defaults: {},
+  defaults: {
+    runtime: true,
+  },
 
   setup(config, nuxt) {
     const mode = nuxt.options.vite.mode!
@@ -21,17 +26,19 @@ export default defineNuxtModule<Config>({
       dts: false,
     })
 
-    // Add types
+    if (config.runtime) {
+      const runtimeEnv = getNuxtRuntimeEnvMap(env.data)
+
+      // Update runtime env
+      Object.assign(nuxt.options.runtimeConfig, runtimeEnv.private)
+      Object.assign(nuxt.options.runtimeConfig.public, runtimeEnv.public)
+    }
+
+    // Add vite types
     addTypeTemplate({
       filename: 'types/env.d.ts',
       getContents: () => env.dtsContent,
     })
-
-    // Update runtime env
-    Object.assign(
-      nuxt.options.runtimeConfig.public,
-      env.data,
-    )
 
     nuxt.hook('vite:extendConfig', async (options) => {
       // Update vite env

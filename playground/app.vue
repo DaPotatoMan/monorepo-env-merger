@@ -1,5 +1,11 @@
+<script lang="ts" setup>
+const env = import.meta.env
+</script>
+
 <template>
   <div>
-    Nuxt module playground!
+    {{ $config.key }}
+    {{ $config.public.key }}
+    {{ env }}
   </div>
 </template>
