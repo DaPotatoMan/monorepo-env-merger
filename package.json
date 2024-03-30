@@ -3,8 +3,14 @@
   "type": "module",
   "version": "1.0.0",
   "description": "Automatically merge env files in a monorepo",
+  "author": "Fahadul Islam @dapotatoman",
   "license": "MIT",
   "repository": "dapotatoman/monorepo-env-merger",
+  "keywords": [
+    "env",
+    "nuxt",
+    "vite-plugin"
+  ],
   "exports": {
     ".": {
       "types": "./dist/types.d.ts",
