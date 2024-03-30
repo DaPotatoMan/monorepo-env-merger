@@ -4,4 +4,8 @@ export default defineNuxtConfig({
   modules: [
     EnvMerger,
   ],
+
+  monorepoENV: {
+    cwd: 'playground',
+  },
 })
