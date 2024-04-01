@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ssr > renders the index page 1`] = `
+{
+  "appMode": "prod",
+  "key": "my-private-key",
+  "public": {
+    "key": "my-public-key",
+  },
+}
+`;

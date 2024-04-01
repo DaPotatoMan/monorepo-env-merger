@@ -4,8 +4,8 @@ const env = import.meta.env
 
 <template>
   <div>
-    {{ $config.key }}
-    {{ $config.public.key }}
-    {{ env }}
+    <template v-for="value, key in env" :key="key">
+      {{ key }} = {{ value }}
+    </template>
   </div>
 </template>

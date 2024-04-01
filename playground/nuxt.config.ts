@@ -1,5 +1,11 @@
+import { monorepoRootSync } from 'monorepo-root'
+
 export default defineNuxtConfig({
   modules: ['../src/module'],
   devtools: { enabled: true },
-  envMerger: {},
+
+  monorepoENV: {
+    root: monorepoRootSync(),
+    cwd: __dirname,
+  },
 })

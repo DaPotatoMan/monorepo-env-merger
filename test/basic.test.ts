@@ -4,14 +4,15 @@ import { $fetch, setup } from '@nuxt/test-utils/e2e'
 
 describe('ssr', async () => {
   await setup({
-    rootDir: fileURLToPath(new URL('./fixtures/basic', import.meta.url)),
+    rootDir: fileURLToPath(new URL('../playground', import.meta.url)),
   })
 
   it('renders the index page', async () => {
-    // Get response to a server-rendered page with `$fetch`.
-    const html = await $fetch('/')
-
+    const html = await $fetch('/api/get-env')
     expect(html).toContain('VITE_APP_MODE')
     expect(html).toContain('VITE_APP_IS_LOCAL')
+
+    const runtimeEnv = await $fetch('/api/get-runtime-env')
+    expect(runtimeEnv).toMatchSnapshot()
   })
 })
