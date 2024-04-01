@@ -1,6 +1,29 @@
 # Changelog
 
 
+## v0.0.3
+
+[compare changes](https://github.com/dapotatoman/monorepo-env/compare/v0.0.2...v0.0.3)
+
+### 🩹 Fixes
+
+- Don't expose values in generated types ([3fafabe](https://github.com/dapotatoman/monorepo-env/commit/3fafabe))
+- Lint issues ([1763d5e](https://github.com/dapotatoman/monorepo-env/commit/1763d5e))
+
+### 💅 Refactors
+
+- CreateENVInterfaceData ([56e9913](https://github.com/dapotatoman/monorepo-env/commit/56e9913))
+
+### 🏡 Chore
+
+- Update readme ([bf15720](https://github.com/dapotatoman/monorepo-env/commit/bf15720))
+- Update tests ([f832586](https://github.com/dapotatoman/monorepo-env/commit/f832586))
+- Update eslint config ([340a0e5](https://github.com/dapotatoman/monorepo-env/commit/340a0e5))
+
+### ❤️ Contributors
+
+- Dapotatoman <iam.fahadul@gmail.com>
+
 ## v0.0.2
 
 [compare changes](https://github.com/dapotatoman/monorepo-env/compare/v0.0.1...v0.0.2)
