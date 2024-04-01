@@ -8,7 +8,7 @@ export interface NuxtRuntimeEnvMap {
 // Functions
 function createENVInterfaceData(env: EnvMap) {
   return Object.entries(env)
-    .map(([key, value]) => `  readonly ${key}: ${JSON.stringify(value)}`)
+    .map(([key]) => `  readonly ${key}: string`)
     .join('\n')
 }
 
