@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v0.0.4
+
+[compare changes](https://github.com/dapotatoman/monorepo-env/compare/v0.0.3...v0.0.4)
+
+### 🚀 Enhancements
+
+- **nuxt:** Update `envDir` update order ([c3c1635](https://github.com/dapotatoman/monorepo-env/commit/c3c1635))
+
+### 🏡 Chore
+
+- Update eslint config ([e880b20](https://github.com/dapotatoman/monorepo-env/commit/e880b20))
+
+### ❤️ Contributors
+
+- Dapotatoman <iam.fahadul@gmail.com>
+
 ## v0.0.3
 
 [compare changes](https://github.com/dapotatoman/monorepo-env/compare/v0.0.2...v0.0.3)
