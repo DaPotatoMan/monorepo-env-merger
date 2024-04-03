@@ -40,8 +40,10 @@ export default defineNuxtModule<Config>({
       getContents: () => env.dtsContent,
     })
 
+    // Define envDir at start so other modules can use it
+    nuxt.options.vite.envDir = env.outputDir
+
     nuxt.hook('vite:extendConfig', async (options) => {
-      // Update vite env
       options.envDir = env.outputDir
     })
   },
