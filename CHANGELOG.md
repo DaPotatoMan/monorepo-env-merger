@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.5
+
+[compare changes](https://github.com/dapotatoman/monorepo-env/compare/v0.0.4...v0.0.5)
+
+### 🚀 Enhancements
+
+- Add nuxt layers support ([9f0e975](https://github.com/dapotatoman/monorepo-env/commit/9f0e975))
+
+### ❤️ Contributors
+
+- Dapotatoman <iam.fahadul@gmail.com>
+
 ## v0.0.4
 
 [compare changes](https://github.com/dapotatoman/monorepo-env/compare/v0.0.3...v0.0.4)
