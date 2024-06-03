@@ -1,5 +1,5 @@
 import { addTypeTemplate, defineNuxtModule } from '@nuxt/kit'
-import { type EnvGeneratorConfig, generateENV, getNuxtRuntimeEnvMap } from './logic'
+import { type EnvGeneratorConfig, generateENV, getNuxtRuntimeEnvMap, getRootDir } from './logic'
 
 interface Config extends Omit<EnvGeneratorConfig, 'dts'> {
   /** Expose env variables to nuxt runtime */
@@ -21,9 +21,17 @@ export default defineNuxtModule<Config>({
 
   setup(config, nuxt) {
     const mode = nuxt.options.vite.mode!
+    const layers = nuxt.options._layers.map(e => e.cwd)
+
     const env = generateENV(mode, {
       ...config,
       dts: false,
+
+      cwd: layers[0],
+      dirs: [
+        getRootDir(),
+        ...layers.reverse(),
+      ],
     })
 
     if (config.runtime) {

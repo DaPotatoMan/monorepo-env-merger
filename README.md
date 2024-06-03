@@ -17,6 +17,7 @@ Automatically merge/share env files between monorepo root and project.
 - 🌍 Supports both Nuxt & Vite
 - 📦 Zero config. Get started without any hassle
 - ⚙️ Automatic Nuxt runtime env handling
+- 🔗 Loads env from Nuxt layers
 - 📃 Auto generated types for env variables
 
 ## Nuxt Setup
